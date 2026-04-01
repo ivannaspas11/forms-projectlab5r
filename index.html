@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторна робота: HTML Форми — Бос</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f0f2f5;
+        color: #333;
+      }
+      section {
+        background: white;
+        padding: 25px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h2 {
+        color: #1a1a1a;
+        border-bottom: 3px solid #007bff;
+        padding-bottom: 10px;
+        margin-top: 0;
+      }
+      div {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"],
+      input[type="tel"],
+      input[type="number"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      input:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+      }
+      fieldset {
+        border: 1px solid #e1e1e1;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      legend {
+        font-weight: bold;
+        padding: 0 10px;
+        color: #555;
+      }
+      .buttons {
+        margin-top: 25px;
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 12px 25px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+      button[type="submit"] {
+        background-color: #28a745;
+        color: white;
+      }
+      button[type="submit"]:hover {
+        background-color: #218838;
+      }
+      button[type="reset"] {
+        background-color: #dc3545;
+        color: white;
+      }
+      button[type="reset"]:hover {
+        background-color: #c82333;
+      }
+      .inline-label {
+        display: inline;
+        font-weight: normal;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>2.1. Реєстрація студента</h2>
+      <form action="/register" method="POST">
+        <div>
+          <label for="lastname">Прізвище:</label>
+          <input type="text" id="lastname" name="lastname" required />
+        </div>
+        <div>
+          <label for="firstname">Ім'я:</label>
+          <input type="text" id="firstname" name="firstname" required />
+        </div>
+        <div>
+          <label for="middlename">По батькові:</label>
+          <input type="text" id="middlename" name="middlename" required />
+        </div>
+        <div>
+          <label for="email">Електронна пошта:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="pwd">Пароль (мінімум 8 символів):</label>
+          <input
+            type="password"
+            id="pwd"
+            name="password"
+            minlength="8"
+            required
+          />
+        </div>
+        <div>
+          <label for="dob">Дата народження:</label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+
+        <fieldset>
+          <legend>Стать:</legend>
+          <input type="radio" id="gender_m" name="gender" value="male" />
+          <label class="inline-label" for="gender_m">Чоловіча</label>
+          <span style="margin: 0 10px"></span>
+          <input type="radio" id="gender_f" name="gender" value="female" />
+          <label class="inline-label" for="gender_f">Жіноча</label>
+        </fieldset>
+
+        <div>
+          <label for="faculty">Факультет:</label>
+          <select id="faculty" name="faculty" required>
+            <option value="">-- Оберіть факультет --</option>
+            <option value="kn">Комп'ютерні науки</option>
+            <option value="ipz">Інженерія програмного забезпечення</option>
+            <option value="ki">Комп'ютерна інженерія</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="course">Курс:</label>
+          <select id="course" name="course" required>
+            <option value="">-- Оберіть курс --</option>
+            <option value="1">1 курс</option>
+            <option value="2">2 курс</option>
+            <option value="3">3 курс</option>
+            <option value="4">4 курс</option>
+            <option value="5">Магістратура</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="bio">Додаткова інформація:</label>
+          <textarea
+            id="bio"
+            name="bio"
+            rows="4"
+            placeholder="Напишіть щось про себе..."
+          ></textarea>
+        </div>
+
+        <div>
+          <input type="checkbox" id="terms" name="terms" required />
+          <label class="inline-label" for="terms"
+            >Я даю згоду на обробку персональних даних</label
+          >
+        </div>
+
+        <div class="buttons">
+          <button type="submit">Зареєструватися</button>
+          <button type="reset">Очистити форму</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Додаткове 1: Замовлення піци</h2>
+      <form action="/pizza-order" method="POST">
+        <fieldset>
+          <legend>Розмір піци:</legend>
+          <input type="radio" id="s25" name="size" value="25" />
+          <label class="inline-label" for="s25">25см</label><br />
+          <input type="radio" id="s35" name="size" value="35" checked />
+          <label class="inline-label" for="s35">35см</label><br />
+          <input type="radio" id="s45" name="size" value="45" />
+          <label class="inline-label" for="s45">45см</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Додаткові інгредієнти:</legend>
+          <input type="checkbox" id="c1" name="extra" value="cheese" />
+          <label class="inline-label" for="c1">Подвійний сир</label><br />
+          <input type="checkbox" id="c2" name="extra" value="bacon" />
+          <label class="inline-label" for="c2">Бекон</label><br />
+          <input type="checkbox" id="c3" name="extra" value="mushrooms" />
+          <label class="inline-label" for="c3">Гриби</label>
+        </fieldset>
+
+        <div>
+          <label for="p_address">Адреса доставки:</label>
+          <input
+            type="text"
+            id="p_address"
+            name="address"
+            required
+            placeholder="Вул. Перемоги, 1, кв. 10"
+          />
+        </div>
+
+        <div>
+          <label for="p_phone">Контактний телефон (0XXXXXXXXX):</label>
+          <input
+            type="tel"
+            id="p_phone"
+            name="phone"
+            pattern="[0-9]{10}"
+            placeholder="0991234567"
+            required
+            title="Введіть 10 цифр номера телефону"
+          />
+        </div>
+
+        <button
+          type="submit"
+          style="background-color: #fd7e14; color: white; width: 100%"
+        >
+          Замовити піцу
+        </button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Додаткове 2: Додавання товару</h2>
+      <form action="/add-product" method="POST" enctype="multipart/form-data">
+        <div>
+          <label for="prod_title">Назва товару:</label>
+          <input type="text" id="prod_title" name="product_name" required />
+        </div>
+
+        <div>
+          <label for="prod_sku">Артикул (Тільки ВЕЛИКІ літери та цифри):</label>
+          <input
+            type="text"
+            id="prod_sku"
+            name="sku"
+            pattern="[A-Z0-9]+"
+            required
+            title="Наприклад: ABC123"
+          />
+        </div>
+
+        <div>
+          <label for="prod_cat"
+            >Категорія (Ctrl+клік для вибору декількох):</label
+          >
+          <select id="prod_cat" name="category" multiple size="4">
+            <option value="elec">Електроніка</option>
+            <option value="appl">Побутова техніка</option>
+            <option value="acc">Аксесуари</option>
+            <option value="soft">Програмне забезпечення</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="prod_desc">Опис товару:</label>
+          <textarea id="prod_desc" name="description" rows="3"></textarea>
+        </div>
+
+        <div>
+          <label for="prod_price">Ціна (₴):</label>
+          <input
+            type="number"
+            id="prod_price"
+            name="price"
+            step="0.01"
+            min="0"
+            required
+            placeholder="0.00"
+          />
+        </div>
+
+        <div>
+          <label for="prod_img">Фотографії товару (до 5 шт):</label>
+          <input
+            type="file"
+            id="prod_img"
+            name="photos"
+            multiple
+            accept="image/*"
+          />
+        </div>
+
+        <button
+          type="submit"
+          style="background-color: #6c757d; color: white; width: 100%"
+        >
+          Додати товар у базу
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
